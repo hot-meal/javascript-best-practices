@@ -1,5 +1,3 @@
-# Javascript: Best Practices
-
 ## Introduction
 
 This is a short, simple guide to producing readable, reusable, and refactorable JavaScript.
