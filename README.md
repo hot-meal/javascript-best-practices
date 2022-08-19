@@ -248,15 +248,16 @@ createMenu({
 
 **[⬆ top](#introduction)**
 
-### Functions should do one thing
+## Modularize - functions should do one thing only
 
-Possibly the most important rule in software engineering. 
+This is a general programming good. practice.
 
-When functions do more than one thing, they become much harder to compose, test, and reason about.
+Using functions that do one job at a time makes it easy for other developers to understand and change your code without having to read through all the code to work out what code block performs what function.
 
-When you can isolate a function to just one action, it can be refactored easily and your code will read much cleaner. 
+This also applies to creating utility functions for common tasks. 
 
-If you take nothing else away from this guide other than this, you'll be ahead of many developers.
+If you find yourself repeating same thing in several different functions then it is time to create a generic helper function instead, and then reuse that function where it is needed.
+
 
 **Bad:**
 
