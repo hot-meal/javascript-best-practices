@@ -1,6 +1,4 @@
-<center>
 <img src="lazy.png" width="200" alt="A sloth hanging from a branch.">
-</center>
 
 ## Introduction
 
