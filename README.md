@@ -315,6 +315,20 @@ addMonthToDate(1, date);
 
 **[⬆ top](#introduction)**
 
+
+## Enhance progressively
+
+Progressive Enhancement is a somewhat forgotton development practice in modern JavaScript.
+
+Graceful degradation versus progressive enhancement is essentially that you should write code that works regardless of available technology. 
+
+With JavaScript, that means that when JavaScript is disabled your web apps should still allow users to accomplish their goal, you should not block them because of the lack of JavaScript which they can’t turn on, or don’t wish to.
+
+Many times you will find a massively complex JavaScript solution for a problem that can be solved easily without it. 
+
+
+**[⬆ top](#introduction)**
+
 ### Functions should have only one level of abstraction
 
 If you have more than one level of abstraction, your function is usually doing too much. 
