@@ -1,8 +1,12 @@
+<center>
+<img src="lazy.png" width="200" alt="A sloth hanging from a branch.">
+</center>
+
 ## Introduction
 
-This is a short, simple guide to producing readable, reusable, and refactorable JavaScript.
+This is a short, simple guide for lazy developers to write readable, reusable, and refactorable JavaScript.
 
-These are guidelines and nothing more. Not every principle has to be strictly followed.
+These are guidelines and nothing more. Not every principle has to be followed.
 
 
 ## **Variables**
