@@ -9,7 +9,13 @@ These are guidelines and nothing more. Not every principle has to be strictly fo
 
 ## **Variables**
 
-### Use meaningful and easy to read variable names
+## Use easy, short and readable variable and function names
+
+We often come across variables like `abc1`, `bh2` or `xkohj` in JavaScript, or — on the other side — variable names like `incrementorTheForLoopWhichFromTenToTwenty` or `createNewMemberIfAgeOverThirty`.
+
+Good names should be easy to understand and tell you what is going on, no more or less. 
+
+Avoid combining values and functionality in names. A function called isLegalDrivingAge() makes more sense than isOverEighteen() as the legal driving age varies around the world, and there are many other things that are limited by age.
 
 **Bad:**
 
@@ -25,6 +31,47 @@ const currentDate = moment().format("YYYY/MM/DD");
 
 **[⬆ top](#introduction)**
 
+## Use Hungarian notation for variable naming 
+
+If you have a variable called `firstName` and it is supposed to be a string, you would write it as `sfirstName` in “Hungarian”. 
+
+An object called `isMember` would be `oisMember` for a Boolean.
+
+It can seem like extra work for some, but it an easy but limited alternative for the lack of type checking natively in JavaScript.
+
+
+**[⬆ top](#introduction)**
+
+## Avoid polluting the global namespace (global variables)
+
+Global variables and function names are a really bad idea. Every JavaScript file included in the page will run within the same scope. 
+
+Which means, if you have global variables or functions in your code, any scripts included after yours that have the same names will overwrite yours.
+
+There are several workarounds to avoid using globals — we’ll go through them one by one now. Say you have three functions and a variable like this:
+
+**Bad:**
+
+```javascript
+let current = null;
+function init(){...}
+function change(){...}
+function verify(){...}
+```
+
+**Good:**
+
+```javascript
+let myNameSpace = {
+  current:null,
+  init:function(){...},
+  change:function(){...},
+  verify:function(){...}
+}
+```
+
+
+**[⬆ top](#introduction)**
 
 ### Use searchable names
 
