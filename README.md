@@ -96,6 +96,23 @@ setTimeout(setTimeout(launch, 86400000);
 
 **[⬆ top](#introduction)**
 
+## Use let and const for local variables
+
+let and const allow you to create block-scoped local variables.
+
+let can be re-declared (in a different scope) while const can’t. 
+
+Unlike var, neither let or const becomes available as a property of the window object in (DOM programming), so they can’t be accessed, and therefore overridden, by other scripts.
+
+You can define let with or without a value, but it can only read or written to after initialisation. However you cannot declare const without a value:
+
+```javascript
+let localVar;
+let localVarText = "text string";
+const LOCAL_CONST = 999;
+```
+
+**[⬆ top](#introduction)**
 
 ### Avoid Mental Mapping
 
@@ -189,6 +206,41 @@ function createMicrobrewery(name = "Hipster Brew Co.") {
   // ...
 }
 ```
+
+**[⬆ top](#introduction)**
+
+## Use shorthands when you can
+
+There are many shorthands that you use to reduce the verbosity of your code and increase the readability.
+
+
+**Long:**
+
+```javascript
+if (value = true) { … }
+```
+
+
+**Short**
+
+```javascript
+if (value) { … }
+```
+
+
+**Long:**
+
+```javascript
+let add = function(a, b) {
+  return a + b;
+}
+```
+
+**Short**
+```javascript
+let add = (a,b) => a + b;
+```
+
 
 **[⬆ top](#introduction)**
 
@@ -624,6 +676,39 @@ class SuperArray extends Array {
   }
 }
 ```
+
+**[⬆ top](#introduction)**
+
+## Prefer for/of over for loops
+
+Loops can have a performance hit when repeating the same operation over and over. 
+
+JavaScript has some best practices for performant loops, like avoiding nesting, putting any DOM manipulation outside of loops, and using a separate variable for the length of the loop (e.g. let countriesCount = countries.length).
+
+Using the for...of loop instead of for is a good performance practice also.
+
+**Bad:**
+
+```javascript
+let cities = ["New York", "Paris", "Beijing", "Sao Paulo", "Auckland"];
+let cityCount = cities.length;
+
+for(let i = 0; i < cityCount; i++) {
+  console.log( cities[i] );
+}
+```
+
+**Good:**
+
+```javascript
+let cities = ["New York", "Paris", "Beijing", "Sao Paulo", "Auckland"];
+
+for(city of cities) {
+  console.log(city);
+}
+```
+
+for/of loop  can be used to iterate over any iterable object, like arrays, strings, nodelists, maps, and more.
 
 **[⬆ top](#introduction)**
 
