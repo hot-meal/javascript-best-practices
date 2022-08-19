@@ -13,7 +13,7 @@ We often come across variables like `abc1`, `bh2` or `xkohj` in JavaScript, or â
 
 Good names should be easy to understand and tell you what is going on, no more or less. 
 
-Avoid combining values and functionality in names. A function called isLegalDrivingAge() makes more sense than isOverEighteen() as the legal driving age varies around the world, and there are many other things that are limited by age.
+Avoid combining values and functionality in names. A function called `isLegalDrivingAge()` makes more sense than `isOverEighteen()` as the legal driving age varies around the world, and there are many other things that are limited by age.
 
 **Bad:**
 
