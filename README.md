@@ -2,20 +2,18 @@
 
 ## Introduction
 
-This is a short, simple guide for lazy developers to write readable, reusable, and refactorable JavaScript.
+Simple guide for writing readable, reusable, and refactorable JavaScript.
 
-These are guidelines and nothing more. Not every principle has to be followed.
+These are only guidelines. Not every principle has to be followed.
 
 
 ## **Variables**
 
-## Use easy, short and readable variable and function names
+## Use short and readable variable and function names
 
-We often come across variables like `abc1`, `bh2` or `xkohj` in JavaScript, or — on the other side — variable names like `incrementorTheForLoopWhichFromTenToTwenty` or `createNewMemberIfAgeOverThirty`.
+We often come across variables like `abc1`, `bh2` or `xkohj` in JavaScript.
 
 Good names should be easy to understand and tell you what is going on, no more or less. 
-
-Avoid combining values and functionality in names. A function called `isLegalDrivingAge()` makes more sense than `isOverEighteen()` as the legal driving age varies around the world, and there are many other things that are limited by age.
 
 **Bad:**
 
@@ -31,24 +29,9 @@ const currentDate = moment().format("YYYY/MM/DD");
 
 **[⬆ top](#introduction)**
 
-## Use Hungarian notation for variable naming 
-
-If you have a variable called `firstName` and it is supposed to be a string, you would write it as `sfirstName` in “Hungarian”. 
-
-An object called `isMember` would be `oisMember` for a Boolean.
-
-It can seem like extra work for some, but it an easy but limited alternative for the lack of type checking natively in JavaScript.
-
-
-**[⬆ top](#introduction)**
-
 ## Avoid polluting the global namespace (global variables)
 
-Global variables and function names are a really bad idea. Every JavaScript file included in the page will run within the same scope. 
-
-Which means, if you have global variables or functions in your code, any scripts included after yours that have the same names will overwrite yours.
-
-There are several workarounds to avoid using globals — we’ll go through them one by one now. Say you have three functions and a variable like this:
+If you have global variables or functions in your code, any scripts included after yours that have the same names will overwrite yours.
 
 **Bad:**
 
@@ -75,7 +58,7 @@ let myNameSpace = {
 
 ### Use searchable names
 
-We read more code than we write. So it's important that the code we write is easily readable and searchable.
+We read more code than we write. So it's important that the code we write is easily searchable.
 
 **Bad:**
 
@@ -100,11 +83,7 @@ setTimeout(setTimeout(launch, 86400000);
 
 let and const allow you to create block-scoped local variables.
 
-let can be re-declared (in a different scope) while const can’t. 
-
 Unlike var, neither let or const becomes available as a property of the window object in (DOM programming), so they can’t be accessed, and therefore overridden, by other scripts.
-
-You can define let with or without a value, but it can only read or written to after initialisation. However you cannot declare const without a value:
 
 ```javascript
 let localVar;
@@ -185,7 +164,7 @@ function paintCar(car, color) {
 
 ### Use default arguments instead of short circuiting or conditionals
 
-Default arguments are often cleaner than short circuiting. Be aware that if you
+Default arguments are cleaner. Be aware that if you
 use them, your function will only provide default values for `undefined`
 arguments. Other "falsy" values such as `''`, `""`, `false`, `null`, `0`, and
 `NaN`, will not be replaced by a default value.
@@ -211,8 +190,7 @@ function createMicrobrewery(name = "Hipster Brew Co.") {
 
 ## Use shorthands when you can
 
-There are many shorthands that you use to reduce the verbosity of your code and increase the readability.
-
+To reduce the verbosity of your code and increase the readability.
 
 **Long:**
 
@@ -248,29 +226,18 @@ let add = (a,b) => a + b;
 
 ### Limit function arguments to two or more (ideally)
 
-Limiting the amount of function parameters is important because it
-makes testing your function easier.
+It makes testing your functions easier.
 
-Having more than three leads to a combinatorial explosion where you have to test many different cases with each separate argument.
+Having more than three leads to where you have to test many different cases with each separate argument.
 
-One or two arguments is ideal, three should be avoided if possible.
-
-Anything more than that should be consolidated. If you have
-more than two arguments then probably your function is trying to do too much. 
-
-JavaScript allows you to make objects on the fly, so you can use an object if you are finding yourself needing a lot of arguments.
+If you need more than two arguments then probably your function is trying to do too much. 
 
 To make it obvious what properties the function expects, you can use the destructuring syntax. This has a few advantages:
 
-1. When someone looks at the function signature, it's immediately clear what
+1. When someone looks at the function, it's immediately clear what
    properties are being used.
 2. It can be used to simulate named parameters.
-3. Destructuring also clones the specified primitive values of the argument
-   object passed into the function. This can help prevent side effects. Note:
-   objects and arrays that are destructured from the argument object are NOT
-   cloned.
-4. Linters can warn you about unused properties, which would be impossible
-   without destructuring.
+3. Linters can warn you about unused properties, which would be impossible without destructuring.
 
 **Bad:**
 
@@ -300,15 +267,13 @@ createMenu({
 
 **[⬆ top](#introduction)**
 
-## Modularize - functions should do one thing only
+## Modularise - functions should do one thing only
 
-This is a general programming good. practice.
+This is a general good practice.
 
-Using functions that do one job at a time makes it easy for other developers to understand and change your code without having to read through all the code to work out what code block performs what function.
+It makes it easy for other developers to understand and change your code without having to read through all the code.
 
-This also applies to creating utility functions for common tasks. 
-
-If you find yourself repeating same thing in several different functions then it is time to create a generic helper function instead, and then reuse that function where it is needed.
+If you find yourself repeating same thing in several different functions then it is time to create a generic utility function instead, and then reuse that function where it is needed.
 
 
 **Bad:**
@@ -364,20 +329,6 @@ function addMonthToDate(month, date) {
 const date = new Date();
 addMonthToDate(1, date);
 ```
-
-**[⬆ top](#introduction)**
-
-
-## Enhance progressively
-
-Progressive Enhancement is a somewhat forgotton development practice in modern JavaScript.
-
-Graceful degradation versus progressive enhancement is essentially that you should write code that works regardless of available technology. 
-
-With JavaScript, that means that when JavaScript is disabled your web apps should still allow users to accomplish their goal, you should not block them because of the lack of JavaScript which they can’t turn on, or don’t wish to.
-
-Many times you will find a massively complex JavaScript solution for a problem that can be solved easily without it. 
-
 
 **[⬆ top](#introduction)**
 
@@ -455,7 +406,7 @@ function parse(tokens) {
 
 ### Do Not Repeat Yourself (DRY)
 
-Duplicate code is bad because it creates more than one place to change something if you need to update some logic.
+Duplicate code creates more than one place to change something if you need to update some logic.
 
 **Bad:**
 
@@ -575,7 +526,7 @@ createMenu(menuConfig);
 
 ### Avoid passing flags as function parameters
 
-Flags indicate that  function does more than one thing. Functions should only do one thing. So use a bollean to split your functions if they are following different paths.
+Functions should only do one thing. Use a boolean to split your functions if they are following different paths.
 
 **Bad:**
 
@@ -607,11 +558,10 @@ function createTempFile(name) {
 
 A function produces a side effect if it does anything other than take a value in and return another value or values (a pure function). 
 
-An example of a side effect would be writing to a file, changing a global variable, or modifying something outside of your app such as the browser title.
+It makes your code less predictable.
 
-You might need to have side effects at times, like having to write to a file. You should try to centralise where you are doing this. Avoid having multiple functions and classes that write to a file. Have only one that that does it. 
+Example of a side effects include writing to a file, changing a global variable, or modifying something outside of your app such as the browser title.
 
-The purpose of this is to avoid common mistakes such as sharing state between objects, using mutable data types that can be written to by anything. It will make your code less predictable.
 
 **Bad:**
 
@@ -653,8 +603,6 @@ Let's say you wanted to extend JavaScript's native Array method to have a `diff`
 
 You could extend the `Array.prototype`, but it could clash with another library that tried to do the same thing. 
 
-What if that other library was using `diff` to find the difference between the first and last elements of an array? 
-
 This is why it is better to use ES6 classes and extend the `Array` global.
 
 **Bad:**
@@ -679,7 +627,7 @@ class SuperArray extends Array {
 
 **[⬆ top](#introduction)**
 
-## Prefer for/of over for loops
+## Prefer for..of over for loops
 
 Loops can have a performance hit when repeating the same operation over and over. 
 
@@ -714,10 +662,7 @@ for/of loop  can be used to iterate over any iterable object, like arrays, strin
 
 ### Choose functional over imperative programming
 
-JavaScript isn't a pure functional language in the way that Haskell is, but it still has
-a functional aspect to it. 
-
-Favour this style of programming when you can.
+JavaScript isn't a pure functional language in the way that Haskell is, but favour this style of programming when you can.
 
 **Bad:**
 
@@ -832,13 +777,11 @@ if (isNodePresent(node)) {
 
 ### Avoid conditionals
 
-This can seem like an impossible task at first. 
+This can seem like an impossible task. 
 
-How can you do anything without an `if` statement? You can use polymorphism to accomplish the same goal in many cases. 
+How can you do anything without an `if` statement? 
 
-So why would you want to do that? 
-
-Because a function should only do one thing. When you have functions that contain `if` statements, your function does more than one thing. Remember, just do one thing.
+When you have functions that contain `if` statements, your function does more than one thing. Remember, just do one thing.
 
 **Bad:**
 
@@ -891,8 +834,7 @@ class Cessna extends Airplane {
 
 ### Don't over-optimize
 
-Modern browsers are pretty well optimised. A lot of
-times, if you are optimising then you may be wasting your time. 
+Modern browsers are well optimised. If you are optimising then you may be wasting your time. 
 
 **Bad:**
 
@@ -919,7 +861,6 @@ for (let i = 0; i < list.length; i++) {
 ### Use getters and setters
 
 Benefits of using getters and setters to access data within your objects:
-
 
 - Makes validation simple when doing a `set`.
 - Encapsulates the object
@@ -980,8 +921,7 @@ account.setBalance(100);
 
 Method chaining allows your code to be more expressive, and less verbose.
 
-In your class functions, simply return `this` at the end of every function,
-and you can chain further class methods onto it.
+In your class functions, simply return `this` at the end of every function, and you can chain further class methods onto it.
 
 **Bad:**
 
@@ -1057,8 +997,6 @@ const car = new Car("Ford", "F-150", "red").setColor("pink").save();
 
 ### Prefer composition over inheritance
 
-You should prefer composition over inheritance when you can. 
-
 If your mind instinctively goes for inheritance, try to think if composition could model your problem better. 
 
 When should you use inheritance? This is a list of when inheritance
@@ -1128,12 +1066,10 @@ class Employee {
 There should never be more than one reason for a class
 to change. 
 
-It's tempting to pack a class with a lot of functionality. The issue with this is that your class won't be cohesive, which will give it many reasons
-to change. 
+It's tempting to pack a class with a lot of functionality. The issue with this is that your class won't be cohesive, which will give it many reasons to change over time. 
 
-Minimizing the amount of times you need to change a class is important.
 
-It's important because if too much functionality is in one class and you modify a piece of it, it can be difficult to understand how that will affect other dependent modules in your codebase.
+If too much functionality is in one class and you modify a piece of it, it can be difficult to understand how that will affect other dependent modules in your codebase.
 
 **Bad:**
 
@@ -1186,8 +1122,7 @@ class UserSettings {
 
 ### Open/Closed Principle (OCP)
 
-As stated by Bertrand Meyer, "software entities (classes, modules, functions,
-etc.) should be open for extension, but closed for modification." 
+As stated by Bertrand Meyer, "software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification." 
 
 What does that mean? 
 
@@ -1435,11 +1370,11 @@ getCleanCodeArticle()
 
 ## **Error Handling**
 
-Thrown errors are useful. Utilise them for when something goes wrong, and have a plan for how to deal with it.
+Utilise thrown errors for when something goes wrong, and have a plan for how to deal with it.
 
 ### Don't ignore errors
 
-Ignoring a caught error doesn't give you the option to  fix
+Ignoring a caught error doesn't give you the option to fix
 or react to said error now or later.
 
 Logging the error (`console.log`) isn't better as often it can get lost in a stream of unrelated logs. 
@@ -1513,10 +1448,7 @@ getdata()
 
 ### Use consistent capitalization
 
-JavaScript is untyped, capitalisation tells you a lot about your variables,
-functions, etc. 
-
-These rules are subjective, so just be consistent.
+Capitalisation tells you a lot about your variables, functions, etc. 
 
 **Bad:**
 
@@ -1556,7 +1488,7 @@ class Alpaca {}
 
 If a function calls or is related to another, keep those functions close in the source file. 
 
-Ideally, keep them together. We read code from top-to-bottom. 
+Keep them together. We read code from top-to-bottom. 
 
 **Bad:**
 
@@ -1644,7 +1576,7 @@ review.perfReview();
 
 ### Only comment things that are not self evident
 
-Good code should _mostly_ document itself.
+Good code should document itself.
 
 **Bad:**
 
@@ -1689,7 +1621,7 @@ function hashIt(data) {
 
 ### Don't leave commented out code in your codebase
 
-Leave old code in your history.
+Leave old code in your version control history.
 
 **Bad:**
 
